@@ -1,0 +1,18 @@
+# Java/Spring Boot (G-Demandes)
+target/
+*.log
+*.class
+.idea/
+*.iml
+/G-Demandes/.mvn/
+/G-Demandes/mvnw
+/G-Demandes/mvnw.cmd
+
+# Angular (G-DemandesUI)
+node_modules/
+dist/
+.angular/
+*.log
+
+# General
+.DS_Store 
