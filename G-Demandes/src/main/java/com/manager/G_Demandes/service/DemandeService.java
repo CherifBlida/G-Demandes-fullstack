@@ -57,6 +57,12 @@ public class DemandeService {
 
         return toDTO(demandeRepository.save(demande));
     }
+    public DemandeDTO getDemandeById(Long id) {
+        Demande demande = demandeRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Demande non trouvée"));
+        return toDTO(demande);
+    }
+
 
     public Page<DemandeDTO> getDemandes(Pageable pageable) {
         return demandeRepository.findAll(pageable).map(this::toDTO);
@@ -71,7 +77,7 @@ public class DemandeService {
     }
 
     public Page<DemandeDTO> findByTitreAndStatus(String titre, Status status, Pageable pageable) {
-        return demandeRepository.findByTitreContainingIgnoreCaseAndStatut(titre, status, pageable).map(this::toDTO);
+        return demandeRepository.findByTitreContainingIgnoreCaseAndStatus(titre, status, pageable).map(this::toDTO);
     }
 
    /* public List<Object[]> getStatusStats() {

@@ -7,7 +7,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
   standalone: true,
   imports: [RouterOutlet, RouterLink, MatToolbarModule],
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
   title = 'Gestion des Demandes';

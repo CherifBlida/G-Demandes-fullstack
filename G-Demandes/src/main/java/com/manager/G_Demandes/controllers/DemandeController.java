@@ -28,6 +28,10 @@ public class DemandeController {
     public DemandeDTO updateDemande(@PathVariable Long id, @Valid @RequestBody DemandeDTO demandeDTO) {
         return demandeService.updateDemande(id, demandeDTO);
     }
+    @GetMapping("/{id}")
+    public DemandeDTO getDemandeById(@PathVariable Long id) {
+        return demandeService.getDemandeById(id);
+    }
 
     @GetMapping
     public Page<DemandeDTO> getDemandes(Pageable pageable,

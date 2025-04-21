@@ -10,6 +10,15 @@ public class Demandeur {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotNull
+    @Column(nullable = false)
+    private String nom;
+
+    @NotNull
+    @Email
+    @Column(nullable = false, unique = true)
+    private String email;
+
     public String getNom() {
         return nom;
     }
@@ -34,12 +43,5 @@ public class Demandeur {
         this.email = email;
     }
 
-    @NotNull
-    @Column(nullable = false)
-    private String nom;
 
-    @NotNull
-    @Email
-    @Column(nullable = false, unique = true)
-    private String email;
 }
