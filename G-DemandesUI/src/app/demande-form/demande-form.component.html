@@ -1,1 +1,52 @@
-<p>demande-form works!</p>
+
+<div class="container">
+  <h2>{{ id ? 'Modifier' : 'Nouvelle' }} Demande</h2>
+  <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+  <form [formGroup]="demandeForm" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="outline">
+      <mat-label>Titre</mat-label>
+      <input matInput formControlName="titre">
+      <mat-error *ngIf="demandeForm.get('titre')?.hasError('required')">
+        Le titre est requis
+      </mat-error>
+      <mat-error *ngIf="demandeForm.get('titre')?.hasError('minlength')">
+        Le titre doit avoir au moins 3 caractères
+      </mat-error>
+      <mat-error *ngIf="demandeForm.get('titre')?.hasError('maxlength')">
+        Le titre ne peut pas dépasser 100 caractères
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Description</mat-label>
+      <textarea matInput formControlName="description"></textarea>
+      <mat-error *ngIf="demandeForm.get('description')?.hasError('maxlength')">
+        La description ne peut pas dépasser 300 caractères
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Statut</mat-label>
+      <mat-select formControlName="status">
+        <mat-option value="OUVERT">Ouvert</mat-option>
+        <mat-option value="EN_COURS">En Cours</mat-option>
+        <mat-option value="FERME">Fermé</mat-option>
+      </mat-select>
+      <mat-error *ngIf="demandeForm.get('status')?.hasError('required')">
+        Le statut est requis
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Email du Demandeur</mat-label>
+      <input matInput formControlName="demandeurEmail">
+      <mat-error *ngIf="demandeForm.get('demandeurEmail')?.hasError('required')">
+        L'email est requis
+      </mat-error>
+      <mat-error *ngIf="demandeForm.get('demandeurEmail')?.hasError('email')">
+        L'email doit être valide
+      </mat-error>
+    </mat-form-field>
+    <div class="actions">
+      <button mat-raised-button color="primary" type="submit" [disabled]="demandeForm.invalid">Enregistrer</button>
+      <button mat-button routerLink="/demandes">Annuler</button>
+    </div>
+  </form>
+</div>

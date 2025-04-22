@@ -1,5 +1,6 @@
 <div class="container">
   <h2>Liste des Demandes</h2>
+
   <div class="filters">
     <mat-form-field appearance="outline">
       <mat-label>Titre</mat-label>
@@ -11,9 +12,12 @@
         <mat-option value="">Tous</mat-option>
         <mat-option value="OUVERT">Ouvert</mat-option>
         <mat-option value="EN_COURS">En Cours</mat-option>
-        <mat-option value="FERMÉ">Fermé</mat-option>
+        <mat-option value="FERME">Fermé</mat-option>
       </mat-select>
     </mat-form-field>
+  </div>
+  <div class="actions">
+    <button mat-raised-button color="primary" routerLink="/demandes/new">Nouvelle Demande</button>
   </div>
   <table mat-table [dataSource]="demandes" class="mat-elevation-z8">
     <ng-container matColumnDef="titre">
