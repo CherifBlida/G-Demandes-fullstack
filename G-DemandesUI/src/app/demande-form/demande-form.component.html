@@ -36,7 +36,7 @@
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label>Email du Demandeur</mat-label>
-      <input matInput formControlName="demandeurEmail">
+      <input matInput formControlName="demandeurEmail" [disabled]="!!id">
       <mat-error *ngIf="demandeForm.get('demandeurEmail')?.hasError('required')">
         L'email est requis
       </mat-error>
